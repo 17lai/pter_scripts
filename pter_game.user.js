@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Pter game Uploady
 // @namespace    https://pterclub.com/forums.php?action=viewtopic&topicid=3391
-// @version      1.1.10
+// @version      1.2.0
 // @description  Game Uploady for Pterclub
 // @author       inerfire
 // @credits      NeutronNoir, ZeDoCaixao
