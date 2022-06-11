@@ -101,16 +101,11 @@ function release_name(title,name) {
     'use strict';
     const game_name = $("h1#top").text().slice(0,-4).trim();
     const torrent = $('#torrent');
-    if (window.location.href.includes("uploadgame")){
-        $("#name").parent().parent().after(
+    const torrent_name = window.location.href.includes("uploadgame") ? $("#name") : $("input[name='torrentname']");
+
+    torrent_name.parent().parent().after(
         "<tr><td>rls name</td><td><input style='width: 450px;' id='rlsid' /></td></tr>"
         );
-    }
-    else {
-        $("input[name='torrentname']").parent().parent().after(
-        "<tr><td>rls name</td><td><input style='width: 450px;' id='rlsid' /></td></tr>"
-        );
-    }
     torrent.change(function () {
         //去掉路径和后缀
         window.rlsname = torrent.val().replace('C:\\fakepath\\','').replace('.torrent','');
@@ -127,7 +122,7 @@ function release_name(title,name) {
     });
     $("#rlsid").after(
         '<a href="javascript:;" id="get_nfo" style="color:green">NFO</a> <a href="javascript:;" id="fill_iso" style="color:blue">ISO</a> <a href="javascript:;" id="fill_fit" style="color:orange">Fitgirl</a> <a href="javascript:;" id="fill_3dm" style="color:red">3DM</a> <a href="javascript:;" id="bundle_trump" style="color:black">Bundle</a>');
-    $("#name").after('<a href="javascript:;" id="get_rls" style="color:red">Title</a>');
+    torrent_name.after('<a href="javascript:;" id="get_rls" style="color:red">Title</a>');
     $('#get_rls').click(function () { release_name(rlsname,game_name)})
     $('#get_nfo').click(function () { find_rls($("#rlsid").val());});
     $('#fill_iso').click(function () { fill_install('iso');});
