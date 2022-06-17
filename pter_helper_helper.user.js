@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Pter Helper Helper
 // @namespace    https://pterclub.com/forums.php?action=viewtopic&topicid=3391
-// @version      0.1.8
+// @version      0.1.9
 // @description  Help per-helper moderate torrents
 // @author       inerfire
 // @match        https://pterclub.com/details.php?id=*
@@ -190,11 +190,11 @@ function set_key() {
 
 (function () {
     if (window.location.href.includes('pterclub.com/usercp.php')){set_key()}
-    $('a.index[href^="download.php?id="]').parent().after('<td class="rowfollow"><a href="javascript:;" id="perfect" style="color:green" ><img src="https://objectstorage.ap-tokyo-1.oraclecloud.com/n/nrmpw4xvtvgl/b/bucket-20200224-2012/o/badge_gpchecker.png" title="审核无误"></a> ' +
-        '<a href="javascript:;" id="good" style="color:blue"><img src="https://objectstorage.ap-tokyo-1.oraclecloud.com/n/nrmpw4xvtvgl/b/bucket-20200224-2012/o/badge_checker.png" title="帮忙修改"></a> ' +
-        '<a href="javascript:;" id="pending" style="color:orange"><img src="https://objectstorage.ap-tokyo-1.oraclecloud.com/n/nrmpw4xvtvgl/b/bucket-20200224-2012/o/x.png" title="需要跟进"></a> ' +
-        '<a href="javascript:;" id="finished" style="color:red"><img src="https://objectstorage.ap-tokyo-1.oraclecloud.com/n/nrmpw4xvtvgl/b/bucket-20200224-2012/o/quality.gif" title="完成修改"></a>' +
-        '<a href="javascript:;" id="bbad" style="color:purple"><img src="https://objectstorage.ap-tokyo-1.oraclecloud.com/n/nrmpw4xvtvgl/b/bucket-20200224-2012/o/disabled.png" title="并不理我"></a></td>')
+    $('a.index[href^="download.php?id="]').parent().after('<td class="rowfollow"><a href="javascript:;" id="perfect" style="color:green" ><img src="https://img.pterclub.com/images/2022/06/17/badge_gpchecker.png" title="审核无误"></a> ' +
+        '<a href="javascript:;" id="good" style="color:blue"><img src="https://img.pterclub.com/images/2022/06/17/badge_checker.png" title="帮忙修改"></a> ' +
+        '<a href="javascript:;" id="pending" style="color:orange"><img src="https://img.pterclub.com/images/2022/06/17/x.png" title="需要跟进"></a> ' +
+        '<a href="javascript:;" id="finished" style="color:red"><img src="https://img.pterclub.com/images/2022/06/17/quality.png" title="完成修改"></a>' +
+        '<a href="javascript:;" id="bbad" style="color:purple"><img src="https://img.pterclub.com/images/2022/06/17/disabled.png" title="并不理我"></a></td>')
     $('#perfect').click(function () {checker(1,post_id=window.localStorage.getItem(PERFECTPOST)).then(alert)});
     $('#good').click(function () {checker(2,post_id=window.localStorage.getItem(GOODPOST)).then(alert)});
     $('#pending').click(function () {checker(3,post_id=window.localStorage.getItem(PENDINGPOST)).then(alert)});
