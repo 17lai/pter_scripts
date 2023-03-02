@@ -22,11 +22,10 @@
 // ==/UserScript==
 var pterimagecookie = GM_getValue("pterimagecookie", null)
 var pterimagekey = GM_getValue("pterimagekey", null)
-if ($('input[name="uploadrefer"]').length > 0) { // 判断元素 uploadrefer 是否存在，editgameinfo 页面没有这个元素
-    $('input[name="uploadrefer"]').after("<p id='status_helper'>输入相关链接并点击相应平台按钮，开始获取信息</p>")
-} else {
-    $('input[name="name"]').after("<p id='status_helper'>输入相关链接并点击相应平台按钮，开始获取信息</p>")
-}
+    $("input[name='name']").parent().parent().after(
+        "<tr><td>Game URL</td><td><input style='width: 450px;' id='gameid' /></td></tr>"
+    );
+$('#gameid').after("<p id='status_helper'>输入相关链接并点击相应平台按钮，开始获取信息</p>")
 const helper = document.getElementById('status_helper');
 
 function html2bb(str) {
@@ -614,9 +613,7 @@ async function triger(gameid) {
         else if (window.location.href.includes("https://s3.pterclub.com/getcookies")) get_pterimage()
     }
 
-    $("input[name='name']").parent().parent().after(
-        "<tr><td>Game URL</td><td><input style='width: 450px;' id='gameid' /></td></tr>"
-    );
+
     const gameid = $("#gameid");
     gameid.after(
         '<a href="javascript:;" id="fill_win" style="color:green">Win</a> <a href="javascript:;" id="fill_lin" style="color:blue">Lin</a> <a href="javascript:;" id="fill_mac" style="color:orange">Mac</a> <a href="javascript:;" id="fill_ns" style="color:red">NS</a> <a href="javascript:;" id="fill_ps4" style="color:grey">PS4</a>' ) ;
