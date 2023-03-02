@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Pter game Uploady
 // @namespace    https://pterclub.com/forums.php?action=viewtopic&topicid=3391
-// @version      1.2.2
+// @version      1.2.3
 // @description  Game Uploady for Pterclub
 // @author       scatowl
 // @credits      NeutronNoir, ZeDoCaixao
@@ -22,7 +22,11 @@
 // ==/UserScript==
 var pterimagecookie = GM_getValue("pterimagecookie", null)
 var pterimagekey = GM_getValue("pterimagekey", null)
-$('input[name="uploadrefer"]').after("<p id='status_helper'>输入相关链接并点击相应平台按钮，开始获取信息</p>")
+if ($('input[name="uploadrefer"]').length > 0) { // 判断元素 uploadrefer 是否存在，editgameinfo 页面没有这个元素
+    $('input[name="uploadrefer"]').after("<p id='status_helper'>输入相关链接并点击相应平台按钮，开始获取信息</p>")
+} else {
+    $('input[name="name"]').after("<p id='status_helper'>输入相关链接并点击相应平台按钮，开始获取信息</p>")
+}
 const helper = document.getElementById('status_helper');
 
 function html2bb(str) {
